@@ -1,34 +1,36 @@
-import { View, Text, TextInput, TouchableOpacity} from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FIREBASE_AUTH } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const auth = FIREBASE_AUTH;
 
-
-const LoginScreen = ({ navigation}) => {
-    const [email, setEmail]= useState("");
-    const [password, setPassword]= useState("");
-    const auth=FIREBASE_AUTH;
-
-    const signIn =async ()=>{
-        try {
-            const response =await signInWithEmailAndPassword(auth,email, password);
-            console.log(response);
-        } catch (error) {
-            console.log(error)
-        }
+  const signIn = async () => {
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const signUp = async ()=>{
-        try {
-            const response =await createUserWithEmailAndPassword(auth,email, password);
-        alert("compte "+response.user.email+" crée avec succès" );
-        } catch (error) {
-            console.log(error);
-        }
+  const signUp = async () => {
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      alert("compte " + response.user.email + " crée avec succès");
+    } catch (error) {
+      console.log(error);
     }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "gray" }}>
