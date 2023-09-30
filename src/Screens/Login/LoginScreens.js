@@ -1,6 +1,9 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { auth } from '../../../firebase';
+import { useNavigation } from '@react-navigation/core'
+const navigation = useNavigation()
 
 const LoginScreens = () => {
   const [email, setEmail]=React.useState('');
