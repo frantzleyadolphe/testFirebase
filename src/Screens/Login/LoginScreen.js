@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation}) => {
     const signUp = async ()=>{
         try {
             const response =await createUserWithEmailAndPassword(auth,email, password);
-            alert("compte cree");
+        alert("compte "+response.user.email+" crée avec succès" );
         } catch (error) {
             console.log(error);
         }
